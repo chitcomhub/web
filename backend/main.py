@@ -28,3 +28,9 @@ def get_unit(unit_id: int):
 def create_unit(unit: Unit):
     result = database.insert_unit(unit)
     return result
+
+
+@app.delete('/units/delete/{unit_id}')
+def delete_unit(unit_id: int):
+    result = database.delete_query(table="units", pk=unit_id)
+    return result
