@@ -2,5 +2,6 @@
 
 .idea/
 venv/
+__pycache__
 
 ### Frontend ###
