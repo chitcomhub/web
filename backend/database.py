@@ -25,3 +25,28 @@ def select_query(table):
     c.execute(f"SELECT * FROM {table}")
     result = [dict(row) for row in c.fetchall()]
     return result
+
+
+def insert_unit(unit):
+    conn = connect_db()
+    c = conn.cursor()
+    unit_data = (unit.first_name,
+                 unit.last_name,
+                 unit.short_bio,
+                 unit.long_bio,
+                 unit.birthday,
+                 unit.telegram,
+                 unit.github,)
+    fields = "first_name, last_name, short_bio, long_bio, birthday, telegram, github"
+    c.execute(f"INSERT INTO units({fields}) VALUES (?, ?, ?, ?, ?, ?, ?)", unit_data)
+    conn.commit()
+    conn.close()
+    return f"Юнит {unit.first_name} {unit.last_name} добавлен"
+
+
+def delete_query(table, pk):
+    conn = connect_db()
+    c = conn.cursor()
+    c.execute(f"DELETE FROM {table} WHERE id={pk}")
+    conn.commit()
+    conn.close()
