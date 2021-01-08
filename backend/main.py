@@ -1,10 +1,26 @@
-from fastapi import FastAPI
+from typing import List
 
-from schemas import Unit
-import database
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
 
+import crud
+import models
+import schemas
+from database import SessionLocal, engine
+
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 @app.get('/')
@@ -12,25 +28,25 @@ def home():
     return {"title": "Welcome to CHITCOM home page"}
 
 
-@app.get('/units')
-def get_units():
-    result = database.select_query("units")
-    return result
+@app.get("/units", response_model=List[schemas.Unit])
+def read_units(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    units = crud.get_units(db, skip=skip, limit=limit)
+    return units
 
 
-@app.get('/units/{unit_id}')
-def get_unit(unit_id: int):
-    result = database.select_query("units")
-    return result[unit_id-1]
+@app.get('/units/{unit_id}', response_model=schemas.Unit)
+def read_unit(unit_id: int, db: Session = Depends(get_db)):
+    db_unit = crud.get_unit(db, unit_id=unit_id)
+    if db_unit is None:
+        raise HTTPException(status_code=404, detail="Unit not found")
+    return db_unit
 
 
-@app.post('/units/create')
-def create_unit(unit: Unit):
-    result = database.insert_unit(unit)
-    return result
+@app.post('/units/create', response_model=schemas.Unit)
+def create_unit(unit: schemas.Unit, db: Session = Depends(get_db)):
+    return crud.create_unit(db=db, unit=unit)
 
 
-@app.delete('/units/delete/{unit_id}')
-def delete_unit(unit_id: int):
-    result = database.delete_query(table="units", pk=unit_id)
-    return result
+@app.delete('/units/{unit_id}')
+def delete_unit(unit_id: int, db: Session = Depends(get_db)):
+    return crud.delete_unit(db=db, unit_id=unit_id)
