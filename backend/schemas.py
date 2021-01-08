@@ -5,6 +5,10 @@ from pydantic import BaseModel, Field, HttpUrl
 
 
 class Unit(BaseModel):
+    id: int = Field(
+        ...,
+        title="id",
+    )
     first_name: str = Field(
         ...,
         title="Имя",
@@ -46,3 +50,6 @@ class Unit(BaseModel):
         title="Фото",
         example="http://pic.com/123.png",
     )
+
+    class Config:
+        orm_mode = True
