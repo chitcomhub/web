@@ -1,8 +1,4 @@
-### Backend ###
-
+# Global / common git ignores resides here
+.directory
+.DS_Store
 .idea/
-venv/
-__pycache__
-*.db
-
-### Frontend ###
