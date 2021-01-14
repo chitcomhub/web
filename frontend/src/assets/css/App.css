@@ -1,0 +1,367 @@
+.alert-debug {
+  background-color: #fff;
+  border-color: #d6e9c6;
+  color: #000;
+}
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+.header > div {
+  color: #f0f0f2;
+}
+
+.header {
+  background-color: #353535;
+}
+
+.container-fluid {
+  background-color: #f1f1f1;
+}
+
+.logo-chitweb {
+  padding: 5px;
+  text-align: center;
+  font-family: sans-serif;
+  margin-top: 5px;
+}
+
+.logo-chitweb a {
+  letter-spacing: 5px;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.logo-chitweb a:hover {
+  color: silver;
+}
+
+.header-menu-item {
+  padding: 5px;
+  margin-right: 5px;
+  color: #f0f0f2;
+}
+
+.header-splitline {
+  border-right: 1px solid;
+  height: 40px;
+}
+
+.header-menu-item-active,
+.header-menu-item:hover {
+  background-color: #3f3f3f;
+  color: silver;
+  text-decoration: none;
+}
+
+.section {
+  font-size: 15px;
+  padding: 10px;
+  font-family: inherit;
+  color: #a39c9c;
+}
+
+.content {
+  background-color: #2b2a2a;
+}
+
+.aside {
+  color: #000;
+  text-align: center;
+  font-family: sans-serif;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.holder {
+  background-color: #e6e6e9;
+  padding: 30px 0 45px 15px;
+}
+
+.holder label {
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.submit-form {
+  background-color: #8c3c2a;
+  color: #fff;
+  border: none;
+  padding: 6px 15px;
+}
+
+.holder span {
+  background-color: #7ba692;
+  color: #fff;
+  padding: 1px 8px;
+}
+
+.skills {
+  margin-bottom: 8px;
+}
+
+.body-chitcom {
+  padding: 10px;
+}
+
+.img-user {
+  border: 4px solid #fff;
+  width: 130px;
+  height: 130px;
+  border-radius: 70px;
+  margin: -17px 5px 0 -31px;
+}
+
+.user-card {
+  margin: 30px;
+  background-color: #fff;
+  padding: 0;
+}
+
+.block-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.block-form {
+  margin-bottom: 20px;
+}
+
+.block-user h5 {
+  padding: 5px;
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.block-user span {
+  background-color: #000;
+  color: #fff;
+  padding: 1px 5px;
+  border: 2px solid #fff;
+}
+
+.block-user p {
+  padding: 1px 10px;
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #8b8b8b;
+}
+
+.icon-social {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+.block-social {
+  margin: 0 0 10px 10px;
+}
+
+.pagination > span {
+  background-color: #7ba692;
+  color: #fff;
+  text-align: center;
+  padding: 5px 25px;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.footer {
+  background-color: #fff;
+  padding: 25px;
+}
+
+.holder > .col-md-2 {
+  margin: 14px;
+}
+
+.skills {
+  padding: 5px;
+  display: block;
+}
+
+.skill-list span {
+  margin: 5px 2px 0px 2px;
+}
+
+.holder select,
+.skills {
+  width: 200px;
+  outline: none;
+  background-color: #f0f0f2;
+  border: none;
+}
+
+.holder select {
+  padding: 7px;
+}
+
+.header-menu,
+.header-burger {
+  display: none;
+}
+
+.block-form-search label {
+  display: block;
+}
+
+.submit-form {
+  margin: 0;
+}
+
+@media (max-width: 575.98px) {
+  .col-6 {
+    margin-bottom: 20px;
+  }
+  .display-switch {
+    display: none;
+  }
+  .header-burger {
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 20px;
+    margin: 15px;
+    z-index: 2;
+  }
+  .header-burger:after,
+  .header-burger:before {
+    content: '';
+    background-color: #fff;
+  }
+  .header-burger:after,
+  .header-burger:before,
+  .header-burger span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+  .header-burger span {
+    background: #fff;
+    top: 9px;
+  }
+  .header-burger:before {
+    top: 0;
+  }
+  .header-burger:after {
+    bottom: 0;
+  }
+  .header-menu {
+    display: block;
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background-color: #353535;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    z-index: 1;
+  }
+  .header-menu.active {
+    top: 50px;
+  }
+  .header-burger.active:before {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: 9px;
+  }
+  .header-burger.active span {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  .header-burger.active:after {
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    bottom: 9px;
+  }
+  .header-link {
+    color: #fff1f1;
+    border-bottom: 1px solid #a49f9f;
+    border-color: hsla(0, 0%, 100%, 0.15) !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    margin: 5px;
+  }
+  .header-list a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .header-list {
+    list-style: none;
+    margin: 5px;
+    padding: 6px;
+  }
+  .header-splitline {
+    border-right: none;
+  }
+  .text-skills {
+    display: block;
+  }
+  .holder select,
+  .search-filter {
+    width: 250px;
+  }
+  .holder > .col-md-2 {
+    margin: 0 0 10px 10px;
+  }
+  .submit-form {
+    margin: 10px 0 0 55px;
+  }
+  .block-form {
+    margin-bottom: 0;
+  }
+  .block-user {
+    margin-left: 11px;
+  }
+  .block-user p {
+    margin: 0 0 12px;
+    font-size: 13px;
+  }
+  .pagination {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-left: 20px;
+  }
+  .logo-chitweb {
+    border-right: none;
+  }
+  .logo-chitweb a {
+    margin-left: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .holder > .col-md-2 {
+    margin: 21px;
+  }
+  .block-user h5 {
+    font-size: 15px;
+  }
+  .logo-chitweb a {
+    margin-left: 20px;
+  }
+  .block-user p {
+    margin: 0 0 15px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .pagination {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-left: 20px;
+  }
+}
