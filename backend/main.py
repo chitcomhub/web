@@ -28,13 +28,13 @@ def home():
     return {"title": "Welcome to CHITCOM home page"}
 
 
-@app.get("/units", response_model=List[schemas.Unit])
+@app.get("/api/units", response_model=List[schemas.Unit])
 def read_units(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     units = crud.get_units(db, skip=skip, limit=limit)
     return units
 
 
-@app.get('/units/{unit_id}', response_model=schemas.Unit)
+@app.get('/api/units/{unit_id}', response_model=schemas.Unit)
 def read_unit(unit_id: int, db: Session = Depends(get_db)):
     db_unit = crud.get_unit(db, unit_id=unit_id)
     if db_unit is None:
@@ -42,11 +42,11 @@ def read_unit(unit_id: int, db: Session = Depends(get_db)):
     return db_unit
 
 
-@app.post('/units/create', response_model=schemas.Unit)
+@app.post('/api/units/create', response_model=schemas.Unit)
 def create_unit(unit: schemas.Unit, db: Session = Depends(get_db)):
     return crud.create_unit(db=db, unit=unit)
 
 
-@app.delete('/units/{unit_id}')
+@app.delete('/api/units/{unit_id}')
 def delete_unit(unit_id: int, db: Session = Depends(get_db)):
     return crud.delete_unit(db=db, unit_id=unit_id)
