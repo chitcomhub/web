@@ -11,7 +11,7 @@ const UnitCard = (props) => {
   return (
     <div className="col-md-4 col-lg-3 col-sm-10 col-11 user-card">
       <div className="block-user">
-        <img src={defaultProfileImg} className="img-user" />
+        <img src={defaultProfileImg} className="img-user" alt="Unit avatar"/>
         <div>
           <h5>
             {unit.first_name} {unit.last_name}
@@ -23,10 +23,10 @@ const UnitCard = (props) => {
       </div>
       <div className="block-socials">
         <a href={getGithubLink(unit.github)}>
-          <img src={socialGithub} className="icon-social" />
+          <img src={socialGithub} className="icon-social" alt="Github"/>
         </a>
         <a href={getTelegramLink(unit.telegram)}>
-          <img src={socialTelegram} className="icon-social" />
+          <img src={socialTelegram} className="icon-social" alt="Telegram"/>
         </a>
       </div>
     </div>

@@ -10,8 +10,9 @@ const UnitFilter = () => {
   const [error, setError] = React.useState('');
 
   const loadUnits = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      setLoading(true);
       const unitsFromBackend = await getAllUnits();
       setUnits(unitsFromBackend);
     } catch (err) {
