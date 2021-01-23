@@ -6,3 +6,9 @@ services:
       context: ./backend
     image: chitweb_prod_backend
 
+  frontend:
+    build:
+      context: ./frontend
+    image: chitweb_prod_frontend
+    ports:
+      - "0.0.0.0:80:80"
