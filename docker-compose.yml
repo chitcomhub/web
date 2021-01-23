@@ -1,9 +1,14 @@
-version: "3.7"
+version: "3.3"
 
 services:
   backend:
     build:
-      context: .
-      dockerfile: ./backend/Dockerfile
+      context: ./backend
+    image: chitweb_prod_backend
+
+  frontend:
+    build:
+      context: ./frontend
+    image: chitweb_prod_frontend
     ports:
-      - 8000:8000
+      - "0.0.0.0:80:80"
