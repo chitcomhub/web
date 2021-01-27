@@ -1,0 +1,29 @@
+name: chitweb-frontend
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/frontend.yml"
+      - "frontend/**"
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
