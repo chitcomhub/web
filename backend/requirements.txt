@@ -8,6 +8,6 @@ idna==3.2
 pydantic==1.8.2
 sniffio==1.2.0
 SQLAlchemy==1.4.20
-starlette==0.15.0
+starlette==0.14.2
 typing-extensions==3.10.0.0
 uvicorn==0.14.0
