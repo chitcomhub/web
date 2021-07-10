@@ -1,14 +1,8 @@
-from typing import Optional
-from datetime import date
-
 from pydantic import BaseModel, Field, HttpUrl
+from typing import Optional
+from datetime import date, datetime
 
-
-class Unit(BaseModel):
-    id: int = Field(
-        ...,
-        title="id",
-    )
+class Member(BaseModel):
     first_name: str = Field(
         ...,
         title="Имя",
@@ -33,7 +27,7 @@ class Unit(BaseModel):
         example="Работаю программистом в компании SkinSwipe",
         max_length=600,
     )
-    birthday: date
+    birthday: Optional[date]
     telegram: Optional[str] = Field(
         None,
         title="Телеграм",
@@ -48,7 +42,12 @@ class Unit(BaseModel):
     photo: Optional[HttpUrl] = Field(
         None,
         title="Фото",
-        example="http://pic.com/123.png",
+        example="https://picsum.photos/200/300?grayscale",
+    )
+    modified: Optional[datetime] = Field(
+        None,
+        title="Время, когда строка была изменена",
+        example="2021-07-10 18:29:34.289060+00:00",
     )
 
     class Config:
