@@ -3,6 +3,22 @@
 The application is written on the FastAPI framework to implement the REST API.
 The whole backend includes a PostGres database with a web-interface to manage it.
 
+This code is following Part 1 of this tutorial: 
+https://ahmed-nafies.medium.com/fastapi-with-sqlalchemy-postgresql-and-alembic-and-of-course-docker-f2b7411ee396
+
+
+Notice: one of the changes made is that we use ``virtualenv`` instead of ``pipenv``
+
+
+# To migrate new datamodel with Alembic:
+Run following code after you update new model in ``models.py`` (you need to run it from within current folder (called ``backend``):
+
+``docker-compose run backend alembic revision --autogenerate -m "Set in your comments"``
+
+``docker-compose run backend alembic upgrade head``
+
+``docker-compose down``
+
 # For development
 ## Installing
     $ python -m pip install virtualenv
@@ -16,7 +32,7 @@ The whole backend includes a PostGres database with a web-interface to manage it
     - if on Windows: $ python -m uvicorn main:app --reload 
     - if on Linux: $ ./run
 
-# To run the whole application
+# To run the whole backend (with Postgres DB)
 While in the backend folder ``backend`` type
 
     docker-compose up
