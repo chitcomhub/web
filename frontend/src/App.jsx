@@ -4,7 +4,7 @@ import './assets/css/App.css';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
 import PageWithContent from './components/PageWithContent';
-import UnitFilter from './components/UnitFilter';
+import MemberFilter from './components/MemberFilter';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <PageWithContent title="Наши специалисты" name="Специалисты">
-            <UnitFilter />
+            <MemberFilter />
           </PageWithContent>
         </Route>
         <Route exact path="/about">

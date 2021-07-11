@@ -7,8 +7,8 @@ const checkStatus = async (response) => {
   return response;
 };
 
-export const getAllUnits = async () => {
-  return fetch(API_BASE_URL + '/units')
+export const getAllMembers = async () => {
+  return fetch(API_BASE_URL + '/members')
     .then(checkStatus)
     .then((response) => response.json())
     .catch((error) => {
