@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import UnitFilter from '../components/UnitFilter';
+import MemberFilter from '../components/MemberFilter';
 import * as api from '../util/api';
 
 // ------ prepare stuff ----------
@@ -22,8 +22,8 @@ afterEach(() => {
 // --------- testing -------------
 
 // test 1
-it('Renders unit data simple case', async () => {
-  const fakeUnit = {
+it('Renders member data simple case', async () => {
+  const fakeMember = {
     id: 1,
     first_name: 'Iункурбек',
     last_name: 'Султанов',
@@ -33,18 +33,18 @@ it('Renders unit data simple case', async () => {
   };
 
   // mock api func
-  api.getAllUnits = jest.fn().mockReturnValue([fakeUnit]);
+  api.getAllMembers = jest.fn().mockReturnValue([fakeMember]);
 
   await act(async () => {
-    render(<UnitFilter />, container);
+    render(<MemberFilter />, container);
   });
 
   // check the name and bio
   let userMainInfoBlock = document.querySelector('.user-card .block-user div');
   expect(userMainInfoBlock.querySelector('h5').textContent).toBe(
-    fakeUnit.first_name + ' ' + fakeUnit.last_name,
+    fakeMember.first_name + ' ' + fakeMember.last_name,
   );
-  expect(userMainInfoBlock.querySelector('p').textContent).toBe(fakeUnit.short_bio);
+  expect(userMainInfoBlock.querySelector('p').textContent).toBe(fakeMember.short_bio);
 
   // check social urls present and correct
   let socialLinks = document.querySelector('.user-card .block-socials').querySelectorAll('a');
@@ -52,8 +52,8 @@ it('Renders unit data simple case', async () => {
     document.querySelector('.user-card .block-socials').querySelectorAll('a'),
   ).map((a) => a.href);
   expect(urls.sort()).toEqual(
-    ['https://t.me/' + fakeUnit.telegram, 'https://github.com/' + fakeUnit.github].sort(),
+    ['https://t.me/' + fakeMember.telegram, 'https://github.com/' + fakeMember.github].sort(),
   );
   // remove the mock
-  api.getAllUnits.mockRestore();
+  api.getAllMembers.mockRestore();
 });
