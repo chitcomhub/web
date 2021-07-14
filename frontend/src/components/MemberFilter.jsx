@@ -1,20 +1,20 @@
 import React, { Fragment } from 'react';
 import Error from './Error';
-import UnitCard from './UnitCard';
+import MemberCard from './MemberCard';
 import loaderGif from './../assets/images/loader.gif';
-import { getAllUnits } from '../util/api';
+import { getAllMembers } from '../util/api';
 
-const UnitFilter = () => {
+const MemberFilter = () => {
   const [loading, setLoading] = React.useState(true);
-  const [units, setUnits] = React.useState([]);
+  const [members, setMembers] = React.useState([]);
   const [error, setError] = React.useState('');
 
-  const loadUnits = async () => {
+  const loadMembers = async () => {
     setLoading(true);
     setError(null);
     try {
-      const unitsFromBackend = await getAllUnits();
-      setUnits(unitsFromBackend);
+      const membersFromBackend = await getAllMembers();
+      setMembers(membersFromBackend);
     } catch (err) {
       setError('Не удалось связаться с бэкендом (' + err.toString() + ')');
     } finally {
@@ -23,12 +23,12 @@ const UnitFilter = () => {
   };
 
   const handleFilter = (event) => {
-    loadUnits();
+    loadMembers();
     event.preventDefault();
   };
 
   React.useEffect(() => {
-    loadUnits();
+    loadMembers();
   }, []);
 
   return (
@@ -69,7 +69,7 @@ const UnitFilter = () => {
       <div className="row body-chitcom justify-content-around">
         {loading && <img src={loaderGif} alt="Загружаю.." />}
         {!loading && error && <Error text={error}></Error>}
-        {!loading && !error && units.map((unit) => <UnitCard key={unit.id} unit={unit} />)}
+        {!loading && !error && members.map((member) => <MemberCard key={member.id} member={member} />)}
       </div>
 
       {/* <div className="row justify-content-center">
@@ -81,4 +81,4 @@ const UnitFilter = () => {
   );
 };
 
-export default UnitFilter;
+export default MemberFilter;
