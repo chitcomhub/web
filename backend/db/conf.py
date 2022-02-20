@@ -1,9 +1,10 @@
 import databases
 import sqlalchemy
 from sqlalchemy.orm import declarative_base
+from config.conf import RootConfig
 
 # SQLAlchemy specific code, as with any other app
-DATABASE_URL = "postgresql://postgres:postgres@db/test_db"
+DATABASE_URL = RootConfig.DB_URL
 # DATABASE_URL = "postgresql://user:password@postgresserver/db"
 
 database = databases.Database(DATABASE_URL)
@@ -17,4 +18,4 @@ engine = sqlalchemy.create_engine(
 Base = declarative_base()
 
 # models
-from user.models import *
+from user.models import User
