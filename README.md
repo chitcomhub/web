@@ -13,3 +13,12 @@
 6) бэк-енд у  нас находится тут: `localhost:8000`
 
 
+автогенерация миграции для alembic
+```shell
+alembic revision --autogenerate -m "Init"
+```
+
+автогенерация миграции для alembic
+```shell
+alembic revision --autogenerate -m "Init"
+```
