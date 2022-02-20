@@ -1,7 +1,5 @@
-from fastapi import APIRouter, HTTPException
-from sqlalchemy import insert, select
-from datetime import datetime
-from db.conf import database
+from fastapi import APIRouter
+from user.crud import UserCrud
 from user.schema import UserSchema
 from user.models import User
 
@@ -10,17 +8,16 @@ user = APIRouter(tags=["User"])
 
 @user.get('/', response_model=UserSchema)
 async def index(
-        id: int
+        pk: int = None
 ):
-    query = select(User).where(User.id == id)
-    obj = await database.fetch_one(query)
-    if not obj:
-        raise HTTPException(status_code=404, detail="Item not found")
+    if pk:
+        obj = await UserCrud.get_object_or_404(User, pk)
+    else:
+        obj = await UserCrud.get_objects_all(User)
     return obj
 
 
 @user.post('create/')
 async def user_create(user: UserSchema):
-    query = insert(User).values(**user.dict(), modified=datetime.now())
-    obj_id = await database.execute(query)
-    return {"id": obj_id, **user.dict()}
+    object = await UserCrud.create_user(User, user)
+    return {"id": object, **user.dict()}
