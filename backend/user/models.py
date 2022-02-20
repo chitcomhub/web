@@ -1,11 +1,10 @@
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, Date, DateTime
+from db.conf import Base
 
-Base = declarative_base()
 
-class Member(Base):
-    __tablename__ = "members"
-    
+class User(Base):
+    __tablename__ = "User"
+
     id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String, index=True, nullable=False)
     last_name = Column(String, index=True, nullable=False)

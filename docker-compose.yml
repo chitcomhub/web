@@ -1,22 +1,21 @@
-version: "3.3"
+version: "3.9"
 
 services:
   db:
-    image: postgres:11
+    image: postgres:14
     ports:
       - "5432:5432"
-    volumes:
-      - ./backend/tmp/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=test_db
+      - PG_HOST=db
   
   backend:
     build: ./backend
-    command: bash -c "cd backend && alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
-      - .:/backend
+      - ./backend:/backend
     ports:
       - "8000:8000"
     depends_on:
