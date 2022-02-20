@@ -9,8 +9,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=test_db
-      - PG_HOST=db
-  
+
   backend:
     build: ./backend
     command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
@@ -20,6 +19,11 @@ services:
       - "8000:8000"
     depends_on:
       - db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test_db
+      - PG_HOST=db
 
   pgadmin:
     container_name: pgadmin
@@ -38,5 +42,5 @@ services:
     image: chitweb_prod_frontend
     ports:
       - "0.0.0.0:80:80"
-    depends_on: 
+    depends_on:
       - backend
