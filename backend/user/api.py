@@ -1,12 +1,14 @@
+from typing import Union, List
+
 from fastapi import APIRouter
 from user.crud import UserCrud
-from user.schema import UserSchema
+from user.schema import UserSchema, UserCreateSchema
 from user.models import User
 
 user = APIRouter(tags=["User"])
 
 
-@user.get('/', response_model=UserSchema)
+@user.get('/', response_model=Union[UserSchema, List[UserSchema]])
 async def index(
         pk: int = None
 ):
@@ -17,7 +19,9 @@ async def index(
     return obj
 
 
-@user.post('create/')
-async def user_create(user: UserSchema):
+@user.post('/')
+async def user_create(
+        user: UserCreateSchema
+):
     object = await UserCrud.create_user(User, user)
     return {"id": object, **user.dict()}

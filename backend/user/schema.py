@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field, HttpUrl
 from datetime import date
 
 
-class UserSchema(BaseModel):
+class UserCreateSchema(BaseModel):
     first_name: str = Field()
     last_name: str = Field()
     short_bio: str = Field()
@@ -14,3 +14,7 @@ class UserSchema(BaseModel):
     telegram: Optional[str] = Field()
     github: Optional[str] = Field()
     photo: Optional[HttpUrl] = Field()
+
+
+class UserSchema(UserCreateSchema):
+    id: int = Field()
