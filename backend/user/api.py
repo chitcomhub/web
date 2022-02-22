@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import insert, select
-from datetime import datetime, timezone
+from datetime import datetime
 from db.conf import database
 from user.schema import UserSchema
 from user.models import User
 
-user = APIRouter()
+user = APIRouter(tags=["User"])
 
 
 @user.get('/', response_model=UserSchema)
