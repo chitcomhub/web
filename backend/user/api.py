@@ -22,8 +22,10 @@ async def members(members_id: int):
     return user
 
 
-@user.post('/member')
+@user.post('/members')
 async def member_create(user_data: UserCreateSchema):
     user_crud = UserCrud(model=User)
     object = await user_crud.create_user(data=user_data)
     return {"id": object, **user_data.dict()}
+
+
