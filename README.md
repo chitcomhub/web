@@ -20,5 +20,8 @@
 alembic revision --autogenerate -m "Init"
 ```
 
+#### [Гайд для новичков][contributing-guide]
+
+[contributing-guide]: https://docs.google.com/document/u/0/d/1e7mNb46DegS5nOsWPrilzj8Q2rCkB5cLIdXK8Hs97xs/mobilebasic
 [actions-link]: https://github.com/chitcomhub/web/actions
 [front-status]: https://github.com/chitcomhub/web/workflows/chitweb-frontend/badge.svg
