@@ -26,7 +26,7 @@ class User(Base):
 
 
 class Specialization(Base):
-    __tablename__ = "skill"
+    __tablename__ = "specialization"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True, nullable=False, unique=True)
