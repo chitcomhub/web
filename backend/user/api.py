@@ -1,26 +1,24 @@
-from fastapi import APIRouter, HTTPException
-from sqlalchemy import insert, select
-from datetime import datetime
-from db.conf import database
-from user.schema import UserSchema
+from typing import Union, List
+
+from fastapi import APIRouter
+from user.crud import UserCrud
+from user.schema import UserSchema, UserCreateSchema
 from user.models import User
 
 user = APIRouter(tags=["User"])
 
 
-@user.get('/', response_model=UserSchema)
-async def index(
-        id: int
+@user.get('/members', response_model=Union[UserSchema, List[UserSchema]])
+async def members():
+    user_crud = UserCrud(model=User)
+    users = await user_crud.get_user_all()
+    return users
+
+
+@user.get('/members/{members_id}', response_model=UserSchema)
+async def members(
+        members_id: int
 ):
-    query = select(User).where(User.id == id)
-    obj = await database.fetch_one(query)
-    if not obj:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return obj
-
-
-@user.post('create/')
-async def user_create(user: UserSchema):
-    query = insert(User).values(**user.dict(), modified=datetime.now())
-    obj_id = await database.execute(query)
-    return {"id": obj_id, **user.dict()}
+    user_crud = UserCrud(model=User)
+    user = await user_crud.get_user_pk(members_id)
+    return user
