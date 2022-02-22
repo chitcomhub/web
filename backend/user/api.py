@@ -16,18 +16,14 @@ async def members():
 
 
 @user.get('/members/{members_id}', response_model=UserSchema)
-async def members(
-        members_id: int
-):
+async def members(members_id: int):
     user_crud = UserCrud(model=User)
     user = await user_crud.get_user_pk(members_id)
     return user
 
 
 @user.post('/member')
-async def user_create(
-        user_data: UserCreateSchema
-):
+async def user_create(user_data: UserCreateSchema):
     user_crud = UserCrud(model=User)
     object = await user_crud.create_user(data=user_data)
     return {"id": object, **user_data.dict()}
