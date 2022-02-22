@@ -15,3 +15,8 @@ class UserCrud(GeneralCrud):
         query = insert(self.model).values(**data.dict(), modified=datetime.now())
         obj_id = await database.execute(query)
         return obj_id
+
+
+class SpecializationCrud(GeneralCrud):
+    def __init__(self, model):
+        self.model = model
