@@ -24,7 +24,7 @@ async def members(
     return user
 
 
-@user.post('/member/create')
+@user.post('/member')
 async def user_create(
         user_data: UserCreateSchema
 ):
