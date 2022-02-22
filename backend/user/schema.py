@@ -18,3 +18,12 @@ class UserCreateSchema(BaseModel):
 
 class UserSchema(UserCreateSchema):
     id: int = Field()
+
+
+class SpecializationsCreateSchema(BaseModel):
+    name: str = Field()
+    description: str = Field()
+
+
+class SpecializationsSchema(SpecializationsCreateSchema):
+    id: int = Field()
