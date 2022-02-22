@@ -3,7 +3,7 @@ from db.conf import Base
 
 
 class User(Base):
-    __tablename__ = "User"
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String, index=True, nullable=False)
