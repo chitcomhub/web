@@ -1,4 +1,3 @@
-import datetime
 from typing import Optional
 
 from pydantic import BaseModel, Field, HttpUrl
@@ -18,3 +17,17 @@ class UserCreateSchema(BaseModel):
 
 class UserSchema(UserCreateSchema):
     id: int = Field()
+
+
+class SpecializationCreateSchema(BaseModel):
+    name: str = Field()
+    description: str = Field()
+
+
+class SpecializationSchema(SpecializationCreateSchema):
+    id: int = Field()
+
+
+class SpecializationUpdateSchema(SpecializationCreateSchema):
+    name: Optional[str] = Field()
+    description: Optional[str] = Field()

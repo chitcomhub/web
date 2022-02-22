@@ -16,8 +16,7 @@ class UserCrud(GeneralCrud):
         obj_id = await database.execute(query)
         return obj_id
 
-    async def get_user_all(self):
-        return await UserCrud.get_objects_all(self.model)
 
-    async def get_user_pk(self, pk):
-        return await UserCrud.get_object_or_404(self.model, pk)
+class SpecializationCrud(GeneralCrud):
+    def __init__(self, model):
+        self.model = model
