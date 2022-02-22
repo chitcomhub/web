@@ -1,4 +1,6 @@
-# Chechen IT Community
+# Chechen IT Community 
+
+[![front-status]][actions-link]
 
 ## Третья попытка
 
@@ -17,3 +19,6 @@
 ```shell
 alembic revision --autogenerate -m "Init"
 ```
+
+[actions-link]: https://github.com/chitcomhub/web/actions
+[front-status]: https://github.com/chitcomhub/web/workflows/chitweb-frontend/badge.svg
