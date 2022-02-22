@@ -19,8 +19,8 @@ async def members():
 
 
 @user.get('/members/{members_id}', response_model=UserSchema)
-async def members(members_id: int):
-    return await UserCrud.get_object_or_404(User, members_id)
+async def members(id: int):
+    return await UserCrud.get_object_or_404(User, id)
 
 
 @user.post('/members')
@@ -39,10 +39,10 @@ async def specializations():
     '/specializations/{specializations_id}',
     response_model=SpecializationSchema
 )
-async def specializations(specializations_id: int):
+async def specializations(id: int):
     return await SpecializationCrud.get_object_or_404(
         Specialization,
-        specializations_id
+        id
     )
 
 
@@ -60,20 +60,20 @@ async def specializations(specialization_data: SpecializationCreateSchema):
     response_model=SpecializationUpdateSchema
 )
 async def specializations(
-        specialization_id: int,
+        id: int,
         specialization_data: SpecializationUpdateSchema,
 ):
     object = await SpecializationCrud.update_object(
         Specialization,
         specialization_data,
-        specialization_id
+        id
     )
     return {"id": object, **specialization_data.dict()}
 
 
 @user.delete('/specializations/{specializations_id}', )
-async def specializations(specialization_id: int, ):
+async def specializations(id: int, ):
     return await SpecializationCrud.delete_object_404(
         Specialization,
-        specialization_id
+        id
     )
