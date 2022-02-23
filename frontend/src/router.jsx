@@ -8,7 +8,11 @@ const routes = [
         path: "/",
         exact: true,
         component: () => (
-            <PageWithContent title="Cпециалисты" name="Специалисты">
+            <PageWithContent
+                title="Специалисты"
+                name="Специалисты"
+                breadcrumbPath="/"
+            >
                 <MemberFilter />
             </PageWithContent>
         ),
@@ -17,7 +21,11 @@ const routes = [
         name: "About us",
         path: "/about",
         component: () => (
-            <PageWithContent title="О нас" name="О нас">
+            <PageWithContent
+                title="О нас"
+                name="О нас"
+                breadcrumbPath="/about"
+            >
                 <p className="alert alert-info">Информацию о проекте можно получить в группе.</p>
             </PageWithContent>
         ),

@@ -1,17 +1,18 @@
 import React, { Fragment } from 'react';
+import {Link} from "react-router-dom";
 
-const PageWithContent = ({ title, name, children }) => {
+const PageWithContent = ({ title, name, children, breadcrumbPath }) => {
   return (
     <Fragment>
       <div className="row content">
-        <div className="col-md-11 section" style={{ color: 'white' }}>
-          <a style={{ color: 'white' }} href="/">
+        <div className="col-md-11 section font-white">
+          <Link className="font-white" to="/">
             ChitWeb
-          </a>{' '}
+          </Link>{' '}
           /{' '}
-          <a style={{ color: 'white' }} href="/">
+          <Link className="font-white" to={breadcrumbPath}>
             {name}
-          </a>
+          </Link>
         </div>
       </div>
       <div className="row">

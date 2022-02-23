@@ -69,6 +69,10 @@
   background-color: #2b2a2a;
 }
 
+.font-white, .font-white:hover {
+  color: #fff
+}
+
 .aside {
   color: #000;
   text-align: center;
