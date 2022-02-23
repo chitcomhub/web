@@ -2,3 +2,4 @@
 .directory
 .DS_Store
 .idea/
+*.pytest

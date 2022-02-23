@@ -23,7 +23,7 @@ async def members(id: int):
     return await UserCrud.get_object_or_404(User, id)
 
 
-@user.post('/members')
+@user.post('/members', status_code=201)
 async def member_create(user_data: UserCreateSchema):
     user_crud = UserCrud(model=User)
     object = await user_crud.create_user(data=user_data)
