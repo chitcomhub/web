@@ -23,6 +23,11 @@ class User(Base):
     github = Column(String)
     photo = Column(String)
     modified = Column(DateTime, nullable=False)
+    specialization = Column(
+        Integer,
+        ForeignKey('specializations.id', ondelete='CASCADE'),
+        nullable=False,
+    )
 
 
 class Specialization(Base):
@@ -31,4 +36,3 @@ class Specialization(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True, nullable=False, unique=True)
     description = Column(Text)
-    Column('user_id', ForeignKey("users.id")),
