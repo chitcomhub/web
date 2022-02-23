@@ -6,8 +6,7 @@ import defaultProfileImg from './../assets/images/default-profile.png';
 import socialGithub from './../assets/images/social/github.png';
 import socialTelegram from './../assets/images/social/telegram.png';
 
-const MemberCard = (props) => {
-  const member = props.member;
+const MemberCard = ({ member }) => {
   return (
     <div className="col-md-4 col-lg-3 col-sm-10 col-11 user-card">
       <div className="block-user">

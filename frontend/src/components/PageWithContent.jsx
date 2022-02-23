@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const PageWithContent = (props) => {
+const PageWithContent = ({ title, name, children }) => {
   return (
     <Fragment>
       <div className="row content">
@@ -10,14 +10,14 @@ const PageWithContent = (props) => {
           </a>{' '}
           /{' '}
           <a style={{ color: 'white' }} href="/">
-            {props.name}
+            {name}
           </a>
         </div>
       </div>
       <div className="row">
-        <div className="col-md-12 aside">{props.title}</div>
+        <div className="col-md-12 aside">{title}</div>
       </div>
-      {props.children}
+      {children}
     </Fragment>
   );
 };

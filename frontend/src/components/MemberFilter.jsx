@@ -5,13 +5,14 @@ import loaderGif from './../assets/images/loader.gif';
 import { getAllMembers } from '../util/api';
 
 const MemberFilter = () => {
-  const [loading, setLoading] = React.useState(true);
   const [members, setMembers] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState('');
 
   const loadMembers = async () => {
     setLoading(true);
     setError(null);
+
     try {
       const membersFromBackend = await getAllMembers();
       setMembers(membersFromBackend);
@@ -68,7 +69,7 @@ const MemberFilter = () => {
 
       <div className="row body-chitcom justify-content-around">
         {loading && <img src={loaderGif} alt="Загружаю.." />}
-        {!loading && error && <Error text={error}></Error>}
+        {!loading && error && <Error text={error} />}
         {!loading && !error && members.map((member) => <MemberCard key={member.id} member={member} />)}
       </div>
 
