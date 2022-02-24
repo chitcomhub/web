@@ -20,11 +20,24 @@ class GeneralCrud:
         return objects
 
     @staticmethod
+    async def get_objects_filter(model, filter_field, filter_by):
+        filter_field = filter_field
+        query = select(model).where(getattr(model, filter_field) == filter_by)
+        objects = await database.fetch_all(query)
+        return objects
+
+    @staticmethod
     async def get_object_or_404(model, pk):
         query = select(model).where(model.id == pk)
         object = await database.fetch_one(query)
         if not object:
-            raise HTTPException(status_code=404, detail="Object not found")
+            raise HTTPException(
+                status_code=404,
+                detail={
+                    "object": model.__name__,
+                    "detail": "not found"
+                }
+            )
         return object
 
     @staticmethod
