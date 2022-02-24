@@ -1,5 +1,5 @@
 import React from 'react';
-import { APP_VERSION } from './../config';
+import { APP_VERSION } from '../config/index';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

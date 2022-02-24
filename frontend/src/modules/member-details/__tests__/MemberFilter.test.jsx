@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import MemberFilter from '../components/MemberFilter';
-import * as api from '../util/api';
+import MemberFilter from '../MemberFilter';
+import * as api from '../../../shared/util/api';
 
 // ------ prepare stuff ----------
 let container = null;

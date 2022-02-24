@@ -1,10 +1,8 @@
-import React from 'react';
+import { getTelegramLink, getGithubLink } from '../../shared/util/stuff';
 
-import { getTelegramLink, getGithubLink } from '../util/stuff';
-
-import defaultProfileImg from './../assets/images/default-profile.png';
-import socialGithub from './../assets/images/social/github.png';
-import socialTelegram from './../assets/images/social/telegram.png';
+import defaultProfileImg from '../../shared/assets/images/default-profile.png';
+import socialGithub from '../../shared/assets/images/social/github.png';
+import socialTelegram from '../../shared/assets/images/social/telegram.png';
 
 const MemberCard = ({ member }) => {
   return (

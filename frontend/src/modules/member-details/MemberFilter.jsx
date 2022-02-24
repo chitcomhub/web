@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import Error from './Error';
+import Error from '../../shared/components/Error';
 import MemberCard from './MemberCard';
-import loaderGif from './../assets/images/loader.gif';
-import { getAllMembers } from '../util/api';
+import loaderGif from '../../shared/assets/images/loader.gif';
+import { getAllMembers } from '../../shared/util/api';
 
 const MemberFilter = () => {
   const [members, setMembers] = React.useState([]);

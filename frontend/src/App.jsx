@@ -1,8 +1,8 @@
 import React from 'react';
-import './assets/css/App.css';
-import Footer from './components/Footer';
-import NavBar from './components/NavBar';
-import { Router } from "./router";
+import './shared/assets/css/App.css';
+import Footer from './shared/components/Footer';
+import NavBar from './shared/components/NavBar';
+import { Router } from "./pages/router";
 
 function App() {
   return (
