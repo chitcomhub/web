@@ -15,8 +15,8 @@ user = APIRouter(tags=["User"])
 
 @user.get('/members', response_model=List[UserSchema])
 async def members(specialization_id: int = None):
-    await UserCrud.get_object_or_404(Specialization, specialization_id)
     if specialization_id:
+        await UserCrud.get_object_or_404(Specialization, specialization_id)
         filter_field = "specialization"
         return await UserCrud.get_objects_filter(
             User,
