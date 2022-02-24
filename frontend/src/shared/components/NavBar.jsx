@@ -7,6 +7,16 @@ const LINKS = [
 ];
 
 const NavBar = () => {
+  const getActiveNavClass = ({ isActive }) => {
+      let defaultClass = "header-menu-item";
+
+      if (isActive) {
+          defaultClass = `${defaultClass} ${defaultClass}-active`;
+      }
+
+      return defaultClass;
+  };
+
   return (
     <header className="row header">
       <div className="col-md-auto col-sm-3 logo-chitweb col-lg-2">
@@ -16,11 +26,9 @@ const NavBar = () => {
       <div className="col-md-4 col-6 align-self-center display-switch">
         {LINKS.map(({to, title}) => (
           <NavLink
-            exact
+            className={getActiveNavClass}
             key={to}
             to={to}
-            className="header-menu-item"
-            activeClassName="header-menu-item-active"
           >
             {title}
           </NavLink>
