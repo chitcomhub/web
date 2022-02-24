@@ -13,6 +13,8 @@ class UserCreateSchema(BaseModel):
     telegram: Optional[str] = Field()
     github: Optional[str] = Field()
     photo: Optional[HttpUrl] = Field()
+    specialization: Optional[int] = Field()
+
 
 
 class UserSchema(UserCreateSchema):
