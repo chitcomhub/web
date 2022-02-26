@@ -14,3 +14,6 @@ engine = sqlalchemy.create_engine(
 )
 
 Base = declarative_base()
+
+# models
+import user.models

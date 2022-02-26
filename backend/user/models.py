@@ -25,7 +25,9 @@ class User(Base):
     modified = Column(DateTime, nullable=False)
     specialization = Column(
         Integer,
-        ForeignKey('specializations.id', ondelete='CASCADE'),
+        ForeignKey('specializations.id',
+                   ondelete='CASCADE',
+                   name='fkey_specialization_user'),
         nullable=False,
     )
 
