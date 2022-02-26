@@ -1,24 +1,21 @@
-# Chechen IT Community 
+# CHITWEB
 
 [![front-status]][actions-link]
 
-## Третья попытка
+#### Установка
 
-Впервые мы решили отказаться от Django и сделать сайт на чем-то более легком.
+    docker-compose build
 
-## Установка проекта к себе:
-1) клонируем репо: ``git clone ...``
-2) заходим в главную папку: ``web``
-3) если на Windows, то проверяем что "Docker Desktop" включен
-4) запускаем `docker-compose up`
-5) фронт-енд можно посмотреть открыв веб-браузер и зайдя на: `localhost:80`
-6) бэк-енд у нас находится тут: `localhost:8000`
+#### Запуск
+
+    docker-compose up
 
 
-автогенерация миграций для alembic
-```shell
-alembic revision --autogenerate -m "Init"
-```
+#### Интерфейсы
+
+    localhost:80 - frontend
+    localhost:8000 - backend
+    localhost:8000/docs - api
 
 #### [Гайд для новичков][contributing-guide]
 
