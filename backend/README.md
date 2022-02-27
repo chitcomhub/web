@@ -1,7 +1,22 @@
 # Backend
 
-миграции для alembic
+## База данных
 
-```shell
-alembic revision --autogenerate -m "Init"
-```
+При запуске проекта через docker-compose структура БД обновляется автоматически,
+но если мы запускаем проект вне докера, то нам необходимо делать это вручную через alembic
+
+Alembic - инструмент для создания и обновления структуры БД с помощью миграций
+
+#### Создание миграций
+
+    alembic revision --autogenerate -m "update <your> table"  ## заменить your
+
+
+#### Запуск миграций
+
+    alembic upgrade head
+
+
+#### Отмена последней миграции
+
+    alembic downgrade -1
