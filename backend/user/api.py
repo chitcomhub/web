@@ -13,8 +13,8 @@ from user.models import User, Specialization
 user = APIRouter(tags=["User"])
 
 
-@user.get('/members', response_model=List[UserSchema])
-async def members(specialization_id: int = None):
+@user.get('/users', response_model=List[UserSchema])
+async def users(specialization_id: int = None):
     if specialization_id:
         await UserCrud.get_object_or_404(Specialization, specialization_id)
         filter_field = "specialization"
@@ -26,13 +26,13 @@ async def members(specialization_id: int = None):
     return await UserCrud.get_objects_all(User)
 
 
-@user.get('/members/{id}', response_model=UserSchema)
-async def members(id: int):
+@user.get('/users/{id}', response_model=UserSchema)
+async def users(id: int):
     return await UserCrud.get_object_or_404(User, id)
 
 
-@user.post('/members')
-async def member_create(user_data: UserCreateSchema):
+@user.post('/users')
+async def user_create(user_data: UserCreateSchema):
     user_crud = UserCrud(model=User)
     object = await user_crud.create_user(data=user_data)
     return {"id": object, **user_data.dict()}
